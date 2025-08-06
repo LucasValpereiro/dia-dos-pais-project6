@@ -51,12 +51,17 @@ h2 {
 }
 
 footer {
-    margin-top: 20px;
-    padding: 15px;
-    background: #111;
-    border-top: 3px solid white;
-    position: relative;
-    z-index: 2;
+    padding: 20px;
+    background: transparent; /* sem fundo sólido */
+    border-top: none; /* sem borda branca fixa */
+    font-size: 1.2em;
+    color: white;
+    position: fixed; /* fixa no fundo */
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* texto acima das imagens */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* melhora a leitura */
 }
 
 /* Emojis animados subindo */
