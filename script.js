@@ -1,25 +1,54 @@
+// Lista de fotos para trocar no centro
+const fotos = [
+    "img/imagem-pai.jpg",
+    "img/imagem-pai2.jpg",
+    "img/imagem-pai3.jpg"
+];
+
+let fotoAtual = 0;
+const fotoPrincipal = document.getElementById("foto-principal");
+
+function trocarFoto() {
+    fotoAtual = (fotoAtual + 1) % fotos.length;
+    fotoPrincipal.style.opacity = 0;
+
+    setTimeout(() => {
+        fotoPrincipal.src = fotos[fotoAtual];
+        fotoPrincipal.style.opacity = 1;
+    }, 500);
+}
+
+// Troca a cada 5 segundos
+setInterval(trocarFoto, 5000);
+
+// -------------------- Animação de emojis e escudo --------------------
 function criarAnimacao() {
     const elemento = document.createElement("div");
     elemento.classList.add("animado");
 
-    // Lista com corações, bolas de Pickleball e Bitcoin
-    const itens = ["❤️", "🏓", "₿"];
+    // Lista de elementos: ❤️, 🏓, escudo Corinthians (imagem)
+    const itens = ["❤️", "🏓", "img/imagem-corinthians.png", "img/imagem-bitcoin.png"];
     const itemAleatorio = itens[Math.floor(Math.random() * itens.length)];
-    elemento.textContent = itemAleatorio;
 
-    // Posição horizontal aleatória
-    elemento.style.left = Math.random() * 100 + "vw";
+    if (itemAleatorio.includes("img/")) {
+        // Se for imagem (escudo)
+        const img = document.createElement("img");
+        img.src = itemAleatorio;
+        img.classList.add("emoji-img");
+        elemento.appendChild(img);
+    } else {
+        // Se for emoji normal
+        elemento.textContent = itemAleatorio;
+    }
 
-    // Velocidade aleatória entre 3s e 5s
-    elemento.style.animationDuration = (Math.random() * 2 + 3) + "s";
+    elemento.style.left = Math.random() * 100 + "vw"; // Posição aleatória
+    elemento.style.animationDuration = (Math.random() * 3 + 3) + "s"; // 3s a 6s
 
     document.body.appendChild(elemento);
 
-    // Remove depois de subir
-    setTimeout(() => {
-        elemento.remove();
-    }, 5000);
+    setTimeout(() => elemento.remove(), 6000);
 }
 
-// Criar um novo elemento a cada meio segundo
-setInterval(criarAnimacao, 500);
+// Cria um emoji/escudo a cada 400ms
+setInterval(criarAnimacao, 400);
+
