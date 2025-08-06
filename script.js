@@ -2,7 +2,7 @@
 const fotos = [
     "imagem-pai.jpg",
     "imagem-pai2.jpg",
-    "imagem-pai3.jpg",
+    "imagem-pai3.jpeg",
     "imagem-pai4.jpg",
     "imagem-pai5.jpg",
     "imagem-pai6.jpg",
