@@ -35,9 +35,9 @@ function criarAnimacao() {
     const itens = ["❤️", "🏓", "imagem-corinthians.jpg", "imagem-bitcoin.jpg"];
     const itemAleatorio = itens[Math.floor(Math.random() * itens.length)];
 
-    if (itemAleatorio.includes("img/")) {
+    if (itemAleatorio.includes("imagem-corinthians.jpg", "imagem-bitocin.jpg")) {
         // Se for imagem (escudo)
-        const img = document.createElement("img");
+        const img = document.createElement("imagem-corinthians.jpg", "imagem-bitocin.jpg");
         img.src = itemAleatorio;
         img.classList.add("emoji-img");
         elemento.appendChild(img);
@@ -56,4 +56,5 @@ function criarAnimacao() {
 
 // Cria um emoji/escudo a cada 400ms
 setInterval(criarAnimacao, 400);
+
 
