@@ -31,13 +31,13 @@ function criarAnimacao() {
     const elemento = document.createElement("div");
     elemento.classList.add("animado");
 
-    // Lista de elementos: ❤️, 🏓, escudo Corinthians (imagem)
-    const itens = ["❤️", "🏓", "imagem-corinthians.jpg", "imagem-bitcoin.jpg"];
+    
+    const itens = ["❤️", "🏓", "🪙","⚽"];
     const itemAleatorio = itens[Math.floor(Math.random() * itens.length)];
 
-    if (itemAleatorio.includes("imagem-corinthians.jpg", "imagem-bitocin.jpg")) {
+    if (itemAleatorio.includes("img/")) {
         // Se for imagem (escudo)
-        const img = document.createElement("imagem-corinthians.jpg", "imagem-bitocin.jpg");
+        const img = document.createElement("img");
         img.src = itemAleatorio;
         img.classList.add("emoji-img");
         elemento.appendChild(img);
