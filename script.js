@@ -1,8 +1,13 @@
 // Lista de fotos para trocar no centro
 const fotos = [
-    "img/imagem-pai.jpg",
-    "img/imagem-pai2.jpg",
-    "img/imagem-pai3.jpg"
+    "imagem-pai.jpg",
+    "imagem-pai2.jpg",
+    "imagem-pai3.jpg",
+    "imagem-pai4.jpg",
+    "imagem-pai5.jpg",
+    "imagem-pai6.jpg",
+    "imagem-pai7.jpg",
+    "imagem-pai8.jpg"
 ];
 
 let fotoAtual = 0;
@@ -27,7 +32,7 @@ function criarAnimacao() {
     elemento.classList.add("animado");
 
     // Lista de elementos: ❤️, 🏓, escudo Corinthians (imagem)
-    const itens = ["❤️", "🏓", "img/imagem-corinthians.png", "img/imagem-bitcoin.png"];
+    const itens = ["❤️", "🏓", "imagem-corinthians.png", "imagem-bitcoin.png"];
     const itemAleatorio = itens[Math.floor(Math.random() * itens.length)];
 
     if (itemAleatorio.includes("img/")) {
