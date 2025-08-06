@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, black, #333);
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 20px;
+    background-color: #000;
+    border-bottom: 5px solid #fff;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #aaa;
+}
+
+.sobre, .galeria, .hobbies {
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+.fotos {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.fotos img {
+    width: 250px;
+    border-radius: 10px;
+    border: 3px solid white;
+    transition: transform 0.3s;
+}
+
+.fotos img:hover {
+    transform: scale(1.05);
+}
+
+.hobbies {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.hobby {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    transition: background 0.3s;
+}
+
+.hobby:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.hobby img {
+    max-width: 100px;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 15px;
+    background: #111;
+    border-top: 3px solid white;
+}
+
+/* Efeito de elementos subindo */
+.animado {
+    position: fixed;
+    bottom: 0;
+    font-size: 2rem;
+    animation: subir linear;
+    z-index: 999;
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
