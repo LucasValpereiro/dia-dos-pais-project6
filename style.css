@@ -53,7 +53,7 @@ footer {
     border-top: 3px solid white;
 }
 
-/* Animação dos elementos subindo */
+/* Emojis animados subindo */
 .animado {
     position: fixed;
     bottom: -50px;
@@ -73,23 +73,16 @@ footer {
     }
 }
 
-/* Imagens fixas no canto */
-.icones-fixos {
+/* Imagens móveis (Corinthians e Bitcoin) */
+#icone-corinthians,
+#icone-bitcoin {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    width: 120px; /* tamanho maior */
+    height: auto;
+    z-index: 10;
+    pointer-events: none; /* não clicáveis */
 }
 
-.icones-fixos img {
-    width: 50px;
-    height: auto;
-    border-radius: 5px;
-    border: 2px solid white;
-    background: white;
-}
 
 
 
