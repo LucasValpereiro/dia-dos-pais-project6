@@ -1,4 +1,4 @@
-// Lista de fotos para trocar no centro
+// Fotos centrais que vão trocando
 const fotos = [
     "imagem-pai.jpg",
     "imagem-pai2.jpg",
@@ -7,7 +7,10 @@ const fotos = [
     "imagem-pai5.jpg",
     "imagem-pai6.jpg",
     "imagem-pai7.jpg",
-    "imagem-pai8.jpg"
+    "imagem-pai8.jpg",
+    "imagem-pickeball.jpg",
+    "imagem-corinthians.jpg",
+    "imagem-bitcoin.jpg"
 ];
 
 let fotoAtual = 0;
@@ -23,38 +26,26 @@ function trocarFoto() {
     }, 500);
 }
 
-// Troca a cada 5 segundos
 setInterval(trocarFoto, 5000);
 
-// -------------------- Animação de emojis e escudo --------------------
+// Animação de emojis subindo
 function criarAnimacao() {
     const elemento = document.createElement("div");
     elemento.classList.add("animado");
 
-    
-    const itens = ["❤️", "🏓", "🪙","⚽"];
-    const itemAleatorio = itens[Math.floor(Math.random() * itens.length)];
+    // Emojis representando amor, pickleball, Corinthians e Bitcoin
+    const itens = ["❤️", "🏓", "⚽", "🪙"];
+    elemento.textContent = itens[Math.floor(Math.random() * itens.length)];
 
-    if (itemAleatorio.includes("img/")) {
-        // Se for imagem (escudo)
-        const img = document.createElement("img");
-        img.src = itemAleatorio;
-        img.classList.add("emoji-img");
-        elemento.appendChild(img);
-    } else {
-        // Se for emoji normal
-        elemento.textContent = itemAleatorio;
-    }
-
-    elemento.style.left = Math.random() * 100 + "vw"; // Posição aleatória
-    elemento.style.animationDuration = (Math.random() * 3 + 3) + "s"; // 3s a 6s
+    elemento.style.left = Math.random() * 100 + "vw";
+    elemento.style.animationDuration = (Math.random() * 3 + 3) + "s";
 
     document.body.appendChild(elemento);
 
     setTimeout(() => elemento.remove(), 6000);
 }
 
-// Cria um emoji/escudo a cada 400ms
 setInterval(criarAnimacao, 400);
+
 
 
