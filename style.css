@@ -48,7 +48,8 @@ h2 {
 }
 
 footer {
-    margin-top: 20px;
+    position: relative;
+    bottom: 20px; /* Sobe o rodapé */
     padding: 15px;
     background: #111;
     border-top: 3px solid white;
