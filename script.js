@@ -8,9 +8,9 @@ const fotos = [
     "imagem-pai6.jpg",
     "imagem-pai7.jpg",
     "imagem-pai8.jpg",
-    "imagem-pickeball.jpg",
     "imagem-corinthians.jpg",
-    "imagem-bitcoin.jpg"
+    "imagem-bitcoin.jpg",
+    "imagem-pickeball.jpg"
 ];
 
 let fotoAtual = 0;
@@ -43,32 +43,43 @@ function criarAnimacao() {
 }
 setInterval(criarAnimacao, 400);
 
-// ===== Movimento suave aleatório para Corinthians e Bitcoin =====
-function moverSuavemente(elemento) {
-    const larguraJanela = window.innerWidth - elemento.width;
-    const alturaJanela = window.innerHeight - elemento.height;
+// ===== Movimento "balão ao vento" =====
+function flutuar(elemento) {
+    let x = Math.random() * (window.innerWidth - 150);
+    let y = Math.random() * (window.innerHeight - 150);
+    let angulo = Math.random() * 2 * Math.PI;
+    let velocidade = 0.5 + Math.random(); // pixels por frame
 
-    const novaX = Math.random() * larguraJanela;
-    const novaY = Math.random() * alturaJanela;
+    function mover() {
+        x += Math.cos(angulo) * velocidade;
+        y += Math.sin(angulo) * velocidade;
 
-    elemento.style.transition = "all 4s ease-in-out";
-    elemento.style.left = novaX + "px";
-    elemento.style.top = novaY + "px";
+        // Rebote nas bordas
+        if (x < 0 || x > window.innerWidth - 150) angulo = Math.PI - angulo;
+        if (y < 0 || y > window.innerHeight - 150) angulo = -angulo;
+
+        elemento.style.left = x + "px";
+        elemento.style.top = y + "px";
+
+        requestAnimationFrame(mover);
+    }
+    mover();
 }
 
 const corinthians = document.getElementById("icone-corinthians");
 const bitcoin = document.getElementById("icone-bitcoin");
 
-// Posicionamento inicial (cantos opostos)
+// Inicia nos cantos opostos
 corinthians.style.left = "10px";
 corinthians.style.top = "10px";
 
-bitcoin.style.right = "10px";
-bitcoin.style.bottom = "10px";
+bitcoin.style.left = (window.innerWidth - 130) + "px";
+bitcoin.style.top = (window.innerHeight - 130) + "px";
 
-// Movimentação contínua
-setInterval(() => moverSuavemente(corinthians), 4000);
-setInterval(() => moverSuavemente(bitcoin), 4000);
+// Começa a flutuar
+flutuar(corinthians);
+flutuar(bitcoin);
+
 
 
 

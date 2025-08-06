@@ -28,6 +28,8 @@ h2 {
     font-size: 1.2em;
     max-width: 600px;
     margin: 20px auto;
+    position: relative;
+    z-index: 2;
 }
 
 .imagem-container {
@@ -35,6 +37,8 @@ h2 {
     justify-content: center;
     align-items: center;
     height: 45vh;
+    position: relative;
+    z-index: 2;
 }
 
 .imagem-container img {
@@ -51,6 +55,8 @@ footer {
     padding: 15px;
     background: #111;
     border-top: 3px solid white;
+    position: relative;
+    z-index: 2;
 }
 
 /* Emojis animados subindo */
@@ -73,15 +79,17 @@ footer {
     }
 }
 
-/* Imagens móveis (Corinthians e Bitcoin) */
+/* Imagens móveis */
 #icone-corinthians,
 #icone-bitcoin {
     position: fixed;
-    width: 120px; /* tamanho maior */
+    width: 120px;
     height: auto;
-    z-index: 10;
-    pointer-events: none; /* não clicáveis */
+    pointer-events: none; /* não bloqueia clique no texto */
+    opacity: 0.7; /* deixa o texto visível mesmo com imagem por cima */
+    z-index: 1; /* abaixo do texto mas acima do fundo */
 }
+
 
 
 
