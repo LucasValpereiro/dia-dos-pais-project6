@@ -32,7 +32,7 @@ function criarAnimacao() {
     elemento.classList.add("animado");
 
     // Lista de elementos: ❤️, 🏓, escudo Corinthians (imagem)
-    const itens = ["❤️", "🏓", "imagem-corinthians.png", "imagem-bitcoin.png"];
+    const itens = ["❤️", "🏓", "imagem-corinthians.jpg", "imagem-bitcoin.jpg"];
     const itemAleatorio = itens[Math.floor(Math.random() * itens.length)];
 
     if (itemAleatorio.includes("img/")) {
