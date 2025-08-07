@@ -15,17 +15,24 @@ const bitcoinIcon = document.getElementById('bitcoin-icon');
 const hinoAudio = new Audio('hino-corinthians.mp3');
 const cifraoAudio = new Audio('cash-register.mp3');
 
-corinthiansIcon.addEventListener('click', () => {
+function stopAllAudio() {
+  hinoAudio.pause();
+  cifraoAudio.pause();
   hinoAudio.currentTime = 0;
+  cifraoAudio.currentTime = 0;
+}
+
+corinthiansIcon.addEventListener('click', () => {
+  stopAllAudio();
   hinoAudio.play();
 });
 
 bitcoinIcon.addEventListener('click', () => {
-  cifraoAudio.currentTime = 0;
+  stopAllAudio();
   cifraoAudio.play();
 });
 
-// Movimento suave dos ícones
+// Movimento suave e contínuo dos ícones
 function animateFloatingIcon(icon) {
   let speedX = (Math.random() * 2 - 1) * 0.5;
   let speedY = (Math.random() * 2 - 1) * 0.5;
@@ -44,6 +51,7 @@ function animateFloatingIcon(icon) {
 
     requestAnimationFrame(move);
   }
+
   move();
 }
 
