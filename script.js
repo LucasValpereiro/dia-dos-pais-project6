@@ -1,5 +1,14 @@
 // Rotação de imagens principais
-const images = ['imagem-pai.jpg', 'imagem-pai2.jpg', 'imagem-pai3.jpeg','imagem-pai4.jpg','imagem-pai5.jpg','imagem-pai6.jpg','imagem-pai7.jpg','imagem-pai8.jpg'];
+const images = [
+  'imagem-pai.jpg',
+  'imagem-pai2.jpg',
+  'imagem-pai3.jpeg',
+  'imagem-pai4.jpg',
+  'imagem-pai5.jpg',
+  'imagem-pai6.jpg',
+  'imagem-pai7.jpg',
+  'imagem-pai8.jpg'
+];
 let currentImage = 0;
 const mainImage = document.getElementById('main-image');
 
@@ -13,23 +22,33 @@ const corinthiansIcon = document.getElementById('corinthians-icon');
 const bitcoinIcon = document.getElementById('bitcoin-icon');
 
 const hinoAudio = new Audio('hino-corinthians.mp3');
-const cifraoAudio = new Audio('cash-register.mp3');
+const cashAudio = new Audio('cash-register.mp3');
 
 function stopAllAudio() {
   hinoAudio.pause();
-  cifraoAudio.pause();
+  cashAudio.pause();
   hinoAudio.currentTime = 0;
-  cifraoAudio.currentTime = 0;
+  cashAudio.currentTime = 0;
 }
 
-corinthiansIcon.addEventListener('click', () => {
+corinthiansIcon.addEventListener('click', (e) => {
+  e.stopPropagation();
   stopAllAudio();
   hinoAudio.play();
 });
 
-bitcoinIcon.addEventListener('click', () => {
+bitcoinIcon.addEventListener('click', (e) => {
+  e.stopPropagation();
   stopAllAudio();
-  cifraoAudio.play();
+  cashAudio.play();
+});
+
+// Liberação de áudio com clique em qualquer canto
+document.body.addEventListener('click', () => {
+  if (hinoAudio.readyState === 0 || cashAudio.readyState === 0) {
+    hinoAudio.load();
+    cashAudio.load();
+  }
 });
 
 // Movimento suave e contínuo dos ícones
