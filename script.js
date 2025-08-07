@@ -1,84 +1,71 @@
-// ===== Fotos centrais =====
-const fotos = [
-    "imagem-pai.jpg",
-    "imagem-pai2.jpg",
-    "imagem-pai3.jpeg",
-    "imagem-pai4.jpg",
-    "imagem-pai5.jpg",
-    "imagem-pai6.jpg",
-    "imagem-pai7.jpg",
-    "imagem-pai8.jpg",
-    "imagem-corinthians.jpg",
-    "imagem-bitcoin.jpg",
-    "imagem-pickeball.jpg"
-];
+// Rotação de imagens principais
+const images = ['imagem-pai.jpg', 'imagem-pai2.jpg', 'imagem-pai3.jpeg','imagem-pai4.jpg','imagem-pai5.jpg','imagem-pai6.jpg','imagem-pai7.jpg','imagem-pai8.jpg'];
+let currentImage = 0;
+const mainImage = document.getElementById('main-image');
 
-let fotoAtual = 0;
-const fotoPrincipal = document.getElementById("foto-principal");
+setInterval(() => {
+  currentImage = (currentImage + 1) % images.length;
+  mainImage.src = images[currentImage];
+}, 5000);
 
-function trocarFoto() {
-    fotoAtual = (fotoAtual + 1) % fotos.length;
-    fotoPrincipal.style.opacity = 0;
+// Áudios para ícones
+const corinthiansIcon = document.getElementById('corinthians-icon');
+const bitcoinIcon = document.getElementById('bitcoin-icon');
 
-    setTimeout(() => {
-        fotoPrincipal.src = fotos[fotoAtual];
-        fotoPrincipal.style.opacity = 1;
-    }, 500);
-}
-setInterval(trocarFoto, 5000);
+const hinoAudio = new Audio('hino-corinthians.mp3');
+const cifraoAudio = new Audio('cash-register.mp3');
 
-// ===== Emojis subindo =====
-function criarAnimacao() {
-    const elemento = document.createElement("div");
-    elemento.classList.add("animado");
+corinthiansIcon.addEventListener('click', () => {
+  hinoAudio.currentTime = 0;
+  hinoAudio.play();
+});
 
-    const itens = ["❤️", "🏓", "⚽", "🪙"];
-    elemento.textContent = itens[Math.floor(Math.random() * itens.length)];
+bitcoinIcon.addEventListener('click', () => {
+  cifraoAudio.currentTime = 0;
+  cifraoAudio.play();
+});
 
-    elemento.style.left = Math.random() * 100 + "vw";
-    elemento.style.animationDuration = (Math.random() * 3 + 3) + "s";
+// Movimento suave dos ícones
+function animateFloatingIcon(icon) {
+  let speedX = (Math.random() * 2 - 1) * 0.5;
+  let speedY = (Math.random() * 2 - 1) * 0.5;
+  let posX = Math.random() * window.innerWidth;
+  let posY = Math.random() * window.innerHeight;
 
-    document.body.appendChild(elemento);
-    setTimeout(() => elemento.remove(), 6000);
-}
-setInterval(criarAnimacao, 400);
+  function move() {
+    posX += speedX;
+    posY += speedY;
 
-// ===== Movimento "balão ao vento" =====
-function flutuar(elemento) {
-    let x = Math.random() * (window.innerWidth - 150);
-    let y = Math.random() * (window.innerHeight - 150);
-    let angulo = Math.random() * 2 * Math.PI;
-    let velocidade = 0.5 + Math.random(); // pixels por frame
+    if (posX < 0 || posX > window.innerWidth - 100) speedX *= -1;
+    if (posY < 0 || posY > window.innerHeight - 100) speedY *= -1;
 
-    function mover() {
-        x += Math.cos(angulo) * velocidade;
-        y += Math.sin(angulo) * velocidade;
+    icon.style.left = posX + 'px';
+    icon.style.top = posY + 'px';
 
-        // Rebote nas bordas
-        if (x < 0 || x > window.innerWidth - 150) angulo = Math.PI - angulo;
-        if (y < 0 || y > window.innerHeight - 150) angulo = -angulo;
-
-        elemento.style.left = x + "px";
-        elemento.style.top = y + "px";
-
-        requestAnimationFrame(mover);
-    }
-    mover();
+    requestAnimationFrame(move);
+  }
+  move();
 }
 
-const corinthians = document.getElementById("icone-corinthians");
-const bitcoin = document.getElementById("icone-bitcoin");
+animateFloatingIcon(corinthiansIcon);
+animateFloatingIcon(bitcoinIcon);
 
-// Inicia nos cantos opostos
-corinthians.style.left = "10px";
-corinthians.style.top = "10px";
+// Emojis subindo pela tela
+function createFloatingEmoji() {
+  const emojis = ['❤️', '⚽', '🏓'];
+  const emoji = document.createElement('div');
+  emoji.className = 'floating-emoji';
+  emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  emoji.style.left = Math.random() * 100 + 'vw';
+  document.body.appendChild(emoji);
 
-bitcoin.style.left = (window.innerWidth - 130) + "px";
-bitcoin.style.top = (window.innerHeight - 130) + "px";
+  setTimeout(() => {
+    emoji.remove();
+  }, 4000);
+}
 
-// Começa a flutuar
-flutuar(corinthians);
-flutuar(bitcoin);
+setInterval(createFloatingEmoji, 800);
+
 
 
 
